@@ -1,0 +1,27 @@
+services:
+  minecraft_server:
+    build:
+      context: .
+      dockerfile: dockerfile
+    image: ghcr.io/excoffierleonard/minecraft-server
+    container_name: ${MINECRAFT_SERVER_SERVICE:-minecraft_server}
+    environment:
+      JAVA_XMS: ${JAVA_XMS:-1024M}
+      JAVA_XMX: ${JAVA_XMX:-1024M}
+      MINECRAFT_VERSION: ${MINECRAFT_VERSION:-latest}
+    ports:
+      - "${SERVER_PORT:-25565}:25565"
+      - "${RCON_PORT:-25575}:25575"
+    volumes:
+      - minecraft_server:/minecraft_server/appdata
+    networks:
+      - minecraft_server
+    restart: on-failure:5
+
+volumes:
+  minecraft_server:
+    name: ${MINECRAFT_SERVER_VOLUME:-minecraft_server}
+
+networks:
+  minecraft_server:
+    name: ${MINECRAFT_SERVER_NETWORK:-minecraft_server}
