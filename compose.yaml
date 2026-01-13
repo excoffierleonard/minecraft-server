@@ -1,5 +1,5 @@
 services:
-  server:
+  minecraft:
     restart: on-failure:5
     build:
       context: .
