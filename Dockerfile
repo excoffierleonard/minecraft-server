@@ -2,14 +2,14 @@
 FROM alpine:latest AS downloader
 
 ARG MC_VERSION
-ARG LOADER_VERSION=0.18.4
-ARG INSTALLER_VERSION=1.1.1
 
-RUN apk add --no-cache curl
+RUN apk add --no-cache curl jq
 
 WORKDIR /download
 
-RUN curl -o server.jar -L "https://meta.fabricmc.net/v2/versions/loader/${MC_VERSION}/${LOADER_VERSION}/${INSTALLER_VERSION}/server/jar"
+RUN LOADER=$(curl -s "https://meta.fabricmc.net/v2/versions/loader/${MC_VERSION}" | jq -r '.[0].loader.version') && \
+    INSTALLER=$(curl -s "https://meta.fabricmc.net/v2/versions/installer" | jq -r '.[0].version') && \
+    curl -o server.jar -L "https://meta.fabricmc.net/v2/versions/loader/${MC_VERSION}/${LOADER}/${INSTALLER}/server/jar"
 
 # Final stage - minimal runtime image
 FROM eclipse-temurin:21-jre
