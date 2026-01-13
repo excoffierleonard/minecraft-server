@@ -16,6 +16,8 @@ docker compose up -d
 |----------|---------|-------------|
 | `MC_VERSION` | `1.21.11` | Minecraft version (set in `.env`) |
 | `JAVA_VERSION` | `21` | JRE version (set in `.env`) |
+| `JAVA_XMS` | `1G` | Initial Java heap size |
+| `JAVA_XMX` | `1G` | Maximum Java heap size |
 | `PORT_SERVER` | `25565` | Minecraft server port |
 | `PORT_RCON` | `25575` | RCON port |
 
@@ -26,6 +28,8 @@ Edit `.env`:
 ```
 MC_VERSION=1.21.11
 JAVA_VERSION=21
+JAVA_XMS=1G
+JAVA_XMX=1G
 ```
 
 Then rebuild:

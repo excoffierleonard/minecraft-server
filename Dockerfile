@@ -17,8 +17,11 @@ RUN LOADER=$(curl -s "https://meta.fabricmc.net/v2/versions/loader/${MC_VERSION}
 # Final stage - minimal runtime image
 FROM eclipse-temurin:${JAVA_VERSION}-jre
 
+ENV JAVA_XMS=1G
+ENV JAVA_XMX=1G
+
 WORKDIR /data
 
 COPY --from=downloader /download/server.jar .
 
-CMD ["java", "-jar", "server.jar", "nogui"]
+CMD exec java -Xms${JAVA_XMS} -Xmx${JAVA_XMX} -jar server.jar nogui
