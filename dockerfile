@@ -1,4 +1,4 @@
-FROM eclipse-temurin:21-jre
+FROM eclipse-temurin:25-jre
 
 ENV JAVA_XMS=1024M
 ENV JAVA_XMX=1024M

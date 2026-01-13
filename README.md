@@ -31,7 +31,7 @@ This Docker image provides a simple and efficient way to run a Minecraft server 
 Execute the following command to download the `compose.yaml` file and start the Minecraft server using Docker Compose, useful if you don't want to think about the configuration.
 
 ```bash
-curl -o compose.yaml https://raw.githubusercontent.com/excoffierleonard/minecraft_server/refs/heads/main/compose.yaml && docker compose up -d
+curl -o compose.yaml https://raw.githubusercontent.com/excoffierleonard/minecraft-server/refs/heads/main/compose.yaml && docker compose up -d
 ```
 
 ## Project Structure
@@ -77,7 +77,7 @@ services:
     build:
       context: .
       dockerfile: dockerfile
-    image: ghcr.io/excoffierleonard/minecraft_server
+    image: ghcr.io/excoffierleonard/minecraft-server
     container_name: ${MINECRAFT_SERVER_SERVICE:-minecraft_server}
     environment:
       JAVA_XMS: ${JAVA_XMS:-1024M}
@@ -105,10 +105,10 @@ networks:
 Alternatively, you can download the [compose.yaml](compose.yaml) file directly from the repository:
 
 ```bash
-curl -o compose.yaml https://raw.githubusercontent.com/excoffierleonard/minecraft_server/refs/heads/main/compose.yaml
+curl -o compose.yaml https://raw.githubusercontent.com/excoffierleonard/minecraft-server/refs/heads/main/compose.yaml
 ```
 
-2. **Create a `.env` File (Optional):**
+1. **Create a `.env` File (Optional):**
 
 Set up environment variables by creating a `.env` file in the same directory as `compose.yaml`. You can use the example below as a guideline:
 
@@ -125,7 +125,7 @@ MINECRAFT_SERVER_NETWORK=minecraft_server
 
 Alternatively, you can hardcode these values directly in [compose.yaml](compose.yaml).
 
-3. **Launch the Service:**
+1. **Launch the Service:**
 
 Start the containers in detached mode with Docker Compose:
 
@@ -141,7 +141,7 @@ docker compose up -d
 docker network create minecraft_server
 ```
 
-2. **Execute the `Run` command:**
+1. **Execute the `Run` command:**
 
 ```bash
 docker run \
@@ -154,7 +154,7 @@ docker run \
   -p 25575:25575 \
   -v minecraft_server:/minecraft_server/appdata \
   --net=minecraft_server \
-  ghcr.io/excoffierleonard/minecraft_server
+  ghcr.io/excoffierleonard/minecraft-server
 ```
 
 ## Volume
@@ -183,8 +183,8 @@ To update to the latest version of Minecraft and Fabric, simply remove the `serv
 ## Building the Image Locally
 
 ```bash
-git clone https://github.com/excoffierleonard/minecraft_server.git && \
-cd minecraft_server && \
+git clone https://github.com/excoffierleonard/minecraft-server.git && \
+cd minecraft-server && \
 docker compose build
 ```
 

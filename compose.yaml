@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: dockerfile
-    image: ghcr.io/excoffierleonard/minecraft_server
+    image: ghcr.io/excoffierleonard/minecraft-server
     container_name: ${MINECRAFT_SERVER_SERVICE:-minecraft_server}
     environment:
       JAVA_XMS: ${JAVA_XMS:-1024M}
