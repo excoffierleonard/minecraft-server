@@ -1,4 +1,4 @@
-FROM openjdk:24-slim-bookworm
+FROM eclipse-temurin:21-jre
 
 ENV JAVA_XMS=1024M
 ENV JAVA_XMX=1024M
