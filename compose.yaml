@@ -5,6 +5,7 @@ services:
       context: .
       args:
         MC_VERSION: ${MC_VERSION}
+        JAVA_VERSION: ${JAVA_VERSION}
     image: ghcr.io/excoffierleonard/minecraft-server:${MC_VERSION}-fabric
     ports:
       - "${PORT_SERVER:-25565}:25565"

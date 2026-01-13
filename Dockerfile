@@ -1,3 +1,6 @@
+# Global ARGs (must be before FROM to use in base image)
+ARG JAVA_VERSION=21
+
 # Build stage - download the server jar
 FROM alpine:latest AS downloader
 
@@ -12,7 +15,7 @@ RUN LOADER=$(curl -s "https://meta.fabricmc.net/v2/versions/loader/${MC_VERSION}
     curl -o server.jar -L "https://meta.fabricmc.net/v2/versions/loader/${MC_VERSION}/${LOADER}/${INSTALLER}/server/jar"
 
 # Final stage - minimal runtime image
-FROM eclipse-temurin:21-jre
+FROM eclipse-temurin:${JAVA_VERSION}-jre
 
 WORKDIR /data
 

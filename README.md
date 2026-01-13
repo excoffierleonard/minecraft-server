@@ -15,6 +15,7 @@ docker compose up -d
 | Variable | Default | Description |
 |----------|---------|-------------|
 | `MC_VERSION` | `1.21.11` | Minecraft version (set in `.env`) |
+| `JAVA_VERSION` | `21` | JRE version (set in `.env`) |
 | `PORT_SERVER` | `25565` | Minecraft server port |
 | `PORT_RCON` | `25575` | RCON port |
 
@@ -24,6 +25,7 @@ Edit `.env`:
 
 ```
 MC_VERSION=1.21.11
+JAVA_VERSION=21
 ```
 
 Then rebuild:
@@ -55,8 +57,10 @@ To add a new version, edit `.github/workflows/build.yaml`:
 matrix:
   include:
     - mc_version: "1.21.11"
+      java_version: "21"
       latest: true          # Tagged as :latest
     - mc_version: "1.20.6"
+      java_version: "21"
       latest: false
 ```
 
@@ -66,6 +70,13 @@ Images are published to `ghcr.io/excoffierleonard/minecraft-server`:
 
 - `:latest` - Most recent version marked with `latest: true`
 - `:1.21.11-fabric` - Specific version tags
+
+## Java Compatibility
+
+| Minecraft Version | Java Version |
+|-------------------|--------------|
+| 1.20.5+ | 21 |
+| 1.18 - 1.20.4 | 17 |
 
 ## Deployment
 
