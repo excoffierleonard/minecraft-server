@@ -20,8 +20,8 @@ FROM eclipse-temurin:${JAVA_VERSION}-jre
 ENV JAVA_XMS=1G
 ENV JAVA_XMX=1G
 
+COPY --from=downloader /download/server.jar /app/server.jar
+
 WORKDIR /data
 
-COPY --from=downloader /download/server.jar .
-
-CMD exec java -Xms${JAVA_XMS} -Xmx${JAVA_XMX} -jar server.jar nogui
+CMD exec java -Xms${JAVA_XMS} -Xmx${JAVA_XMX} -jar /app/server.jar nogui

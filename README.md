@@ -74,6 +74,15 @@ Images are published to `ghcr.io/excoffierleonard/minecraft-server`:
 - `:latest` - Most recent version marked with `latest: true`
 - `:1.21.11-fabric` - Specific version tags
 
+## Directory Structure
+
+The container separates application files from server data:
+
+- `/app/server.jar` - The Fabric server binary (immutable, part of image)
+- `/data` - Working directory for world saves, configs, mods, and logs (mount as volume for persistence)
+
+This separation ensures the server binary isn't accidentally overwritten when mounting a data volume.
+
 ## Java Compatibility
 
 | Minecraft Version | Java Version |
