@@ -19,7 +19,6 @@ docker compose up -d
 | `JAVA_XMS` | `1G` | Initial Java heap size |
 | `JAVA_XMX` | `1G` | Maximum Java heap size |
 | `PORT_SERVER` | `25565` | Minecraft server port |
-| `PORT_RCON` | `25575` | RCON port |
 
 ### Changing Minecraft Version
 
